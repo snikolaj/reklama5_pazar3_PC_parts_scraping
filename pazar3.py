@@ -7,7 +7,7 @@ def htmldelete(string, index):
     string = string.split('<')[0]
     newstr = ""
     for i in range(len(string) - index):
-        newstr +=  string[i + index]
+        newstr += string[i + index]
     return newstr
     
 def eurtomkd(string):
