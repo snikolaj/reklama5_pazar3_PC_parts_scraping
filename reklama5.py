@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-def htmldelete(string, index):
+def htmldelete(string, index): # index is to remove empty space in the beginning, can be improved
     string = string.split('>')[1]
     string = string.split('<')[0]
     newstr = ""
@@ -24,10 +24,12 @@ URL = "http://reklama5.mk/Search?q=&city=&sell=0&sell=1&buy=0&buy=1&trade=0&trad
 page = requests.get(URL)
 
 soup = BeautifulSoup(page.content, "html.parser")
+
 items = soup.find_all(class_="SearchAdTitle")
 prices = soup.find_all(class_="text-left text-success")
 locations = soup.find_all(class_="clear-margin")
 links = soup.find_all("a", class_="SearchAdTitle", href=True)
+
 for i in range(len(items)):
     string = str(items[i])
     string = htmldelete(string, 1)
