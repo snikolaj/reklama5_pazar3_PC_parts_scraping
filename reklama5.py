@@ -6,7 +6,7 @@ def htmldelete(string, index): # index is to remove empty space in the beginning
     string = string.split('<')[0]
     newstr = ""
     for i in range(len(string) - index):
-        newstr +=  string[i + index]
+        newstr += string[i + index]
     return newstr
     
 def eurtomkd(string):
@@ -40,11 +40,11 @@ for i in range(len(items)):
     string = eurtomkd(string)
     print(string)
 
+    print("reklama5.mk" + links[i].get('href'))
+
     string = str(locations[i])
     string = htmldelete(string, 0)
     string = string.replace("&gt;", ">")
-    print(string)
-
-    print("reklama5.mk" + links[i].get('href') + '\n')
+    print(string + '\n')
 
 

@@ -14,7 +14,8 @@ def eurtomkd(string):
 
     string = string.replace(".", "")
     if "МКД" not in string:
-        string = string.replace(" ЕУР", "") # if it's >1000 EUR it will give a wrong result because the site writes it as "1 000" instead of "1000"
+        string = string.replace(" ЕУР", "")
+        string = string.replace(" ", "")
         try:
             string = str(int(string) * 60) + " МКД"
         except:
@@ -29,6 +30,11 @@ def gethref(string):
     except:
         return ""
 
+def getcity(string):
+    try:
+        return string.split("/")[4]
+    except:
+        return ""
 
 URL = "https://www.pazar3.mk/oglasi/elektronika/delovi-za-kompjuteri-dodatoci/se-prodava"
 
@@ -53,8 +59,8 @@ for i in range(len(prices)):
 
     string = str(links[i])
     string = gethref(string)
-    print("pazar3.mk" + string + '\n')
-#print(len(items), len(prices), len(links))
+    print("pazar3.mk" + string)
 
-
-
+    string = getcity(string)
+    string = string.capitalize()
+    print(string + '\n')
